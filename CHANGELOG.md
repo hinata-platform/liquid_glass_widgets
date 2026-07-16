@@ -1,8 +1,38 @@
-# 0.21.6+hinata.3
+# 0.21.6+hinata.4
 
 > **Hinata maintained fork** (`hinata-platform/liquid_glass_widgets`), upstream
 > `sdegenaar/liquid_glass_widgets` **0.21.6** + the local additions carried on
 > the `hinata` branch. `main` stays a clean upstream mirror.
+
+## ⚡ Performance — `GlassPopover` ramps its backdrop blur (candidate for upstream PR)
+
+- **`GlassPopover` now eases its backdrop blur in over the opening morph**
+  instead of rendering it at full strength from the first frame. The per-frame
+  `BackdropFilter` blur is the dominant raster cost while a popover morphs out
+  of its trigger, and paying it in full during the cheapest, still-growing part
+  of the morph is exactly what drops frames. The blur now ramps `0 → settings.blur`
+  over the morph, so the early frames stay cheap and full strength is reached
+  only as the popover settles. Measured on a mid-range Android device this
+  roughly **halved the raster time of the open transition** with no perceptible
+  visual change — the blur simply blooms in with the glass rather than snapping
+  on. See [`docs/POPOVER_BLUR_RAMP.md`](docs/POPOVER_BLUR_RAMP.md) for the
+  before/after and the mechanism.
+
+  Two new (backwards-compatible) parameters:
+
+  - **`blurRampDuration`** — how long the blur takes to reach full strength.
+    Defaults to `Duration(milliseconds: 260)` (about the window the morph itself
+    settles in). Set it to **`Duration.zero`** to restore the previous
+    render-full-blur-from-frame-one behaviour.
+  - **`blurRampCurve`** — the easing curve of the ramp. Defaults to
+    `Curves.easeOut`.
+
+  The ramp is skipped automatically when the platform "reduce motion"
+  accessibility setting is active (full blur, no animation). Because the ramp is
+  driven by a dedicated controller — not the morph spring — the blur eases
+  monotonically to full and never wobbles with the spring's underdamped
+  overshoot. This supersedes the app-level `MorphBlurPopover` wrapper that
+  previously carried this optimisation in the Hinata app.
 
 ## 🔧 Improvements
 
