@@ -1,3 +1,17 @@
+# 0.21.6+hinata.3
+
+> **Hinata maintained fork** (`hinata-platform/liquid_glass_widgets`), upstream
+> `sdegenaar/liquid_glass_widgets` **0.21.6** + the local additions carried on
+> the `hinata` branch. `main` stays a clean upstream mirror.
+
+## 🔧 Improvements
+
+- **`ProgressiveBlur` shader is now pre-warmed by `LiquidGlassWidgets.initialize()`**
+  — its `progressive_blur.frag` is loaded alongside the other library shaders in
+  `initialize()`, so apps no longer need a separate `ProgressiveBlur.preload()`
+  call (that static remains available and idempotent for standalone use). Unifies
+  shader warm-up under the one package entry point.
+
 # 0.21.6+hinata.2
 
 > **Hinata maintained fork** (`hinata-platform/liquid_glass_widgets`), upstream
