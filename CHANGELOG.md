@@ -1,3 +1,25 @@
+# 0.21.6+hinata.1
+
+> **Hinata maintained fork** (`hinata-platform/liquid_glass_widgets`). This is
+> upstream `sdegenaar/liquid_glass_widgets` **0.21.6** with the local patches
+> below carried on the `hinata` branch. `main` stays a clean upstream mirror;
+> the patches are rebased forward on every upstream sync.
+
+## 🩹 Local patches
+
+- **Popover renders into the root overlay** — `GlassPopover`'s morphing overlay
+  targets `OverlayChildLocation.rootOverlay` instead of the nearest overlay. The
+  morph is positioned with absolute, root-relative coordinates, so a nested
+  overlay (e.g. a `ShellRoute` content area offset by a side rail) double-counts
+  its origin and the popover drifts off its trigger. The root overlay always
+  shares the global coordinate space, so the popover lands on its trigger in
+  every embedding.
+- **Popover live re-measure** — in intrinsic-height mode the popover now tracks
+  content that grows/shrinks *while open* (via `SizeChangedLayoutNotifier`) and
+  re-measures instead of overflowing the height frozen at open time.
+
+---
+
 # 0.21.6
 
 ## 🐛 Bug Fixes
