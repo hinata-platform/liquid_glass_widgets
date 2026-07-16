@@ -2,7 +2,7 @@ name: liquid_glass_widgets
 description: A Flutter UI kit implementing the iOS 26 Liquid Glass design language. Features shader-based glassmorphism, physics-driven jelly animations, and dynamic lighting.
 # Base upstream 0.21.6 + Hinata local patches (see CHANGELOG). The +hinata.N
 # build suffix keeps us aligned with the upstream version we rebase onto.
-version: 0.21.6+hinata.1
+version: 0.21.6+hinata.2
 
 
 homepage: https://github.com/hinata-platform/liquid_glass_widgets
@@ -49,3 +49,4 @@ flutter:
     - shaders/interactive_indicator.frag
     - shaders/liquid_glass_geometry_blended.frag
     - shaders/liquid_glass_final_render.frag
+    - shaders/progressive_blur.frag

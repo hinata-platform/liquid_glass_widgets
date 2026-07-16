@@ -1,9 +1,28 @@
+# 0.21.6+hinata.2
+
+> **Hinata maintained fork** (`hinata-platform/liquid_glass_widgets`), upstream
+> `sdegenaar/liquid_glass_widgets` **0.21.6** + the local additions carried on
+> the `hinata` branch. `main` stays a clean upstream mirror.
+
+## ✨ New feature — `ProgressiveBlur` (candidate for upstream PR)
+
+- **`ProgressiveBlur`** + **`ProgressiveBlurDirection`** — a *graduated* backdrop
+  blur (the Signal / iOS-26 header dissolve) that is strongest at one edge and
+  eases to perfectly sharp at the opposite edge. The library's glass surfaces
+  apply a *uniform* blur; this is the missing progressive primitive. It samples
+  the real backdrop through a fragment shader bound as the `ImageFilter` of a
+  `BackdropFilter` (`shaders/progressive_blur.frag`, importance-sampled separable
+  gaussian) — a single backdrop capture + draw — so the fade is band-free on
+  every backend. Degrades to a uniform `BackdropFilter` where shader filters are
+  unavailable (Skia / web). `maxSigma` can be driven from a scroll offset to fade
+  in/out; call `ProgressiveBlur.preload()` from `main()` to pre-compile. Self
+  contained — no glass layer/ancestor required.
+
 # 0.21.6+hinata.1
 
-> **Hinata maintained fork** (`hinata-platform/liquid_glass_widgets`). This is
-> upstream `sdegenaar/liquid_glass_widgets` **0.21.6** with the local patches
-> below carried on the `hinata` branch. `main` stays a clean upstream mirror;
-> the patches are rebased forward on every upstream sync.
+> Upstream **0.21.6** with the local popover patches below on the `hinata`
+> branch. `main` stays a clean upstream mirror; the patches are rebased forward
+> on every upstream sync.
 
 ## 🩹 Local patches
 
