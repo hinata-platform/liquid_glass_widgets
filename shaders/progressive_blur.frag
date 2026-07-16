@@ -1,6 +1,7 @@
 #version 460 core
 #include <flutter/runtime_effect.glsl>
-
+// Copyright 2026, Rebar Ahmad for hinata.ahmadre.com. GPL 3.0 License
+//
 // One axis of a SEPARABLE gaussian, used twice (horizontal then vertical) via
 // ImageFilter.compose to build a full, clean 2-D gaussian in O(σ) work per pass
 // instead of the O(σ²) a single-pass disk needs (a disk either streaks with too
