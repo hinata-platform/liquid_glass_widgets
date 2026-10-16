@@ -1,0 +1,10 @@
+before
+  Keine                rest (248, 227, 240) hover (248, 227, 240)  max channel delta   0  contrast 1.0
+  Epic                 rest (248, 245, 237) hover (248, 245, 237)  max channel delta   0  contrast 1.0
+  Zugewiesene Person   rest (249, 244, 237) hover (249, 244, 237)  max channel delta   0  contrast 1.0
+  Sub-Task             rest (248, 246, 240) hover (248, 246, 240)  max channel delta   0  contrast 1.0
+after
+  Keine                rest (248, 227, 240) hover (237, 217, 231)  max channel delta  11  contrast 1.099
+  Epic                 rest (248, 245, 237) hover (237, 235, 228)  max channel delta  11  contrast 1.095
+  Zugewiesene Person   rest (249, 244, 237) hover (238, 234, 228)  max channel delta  11  contrast 1.095
+  Sub-Task             rest (248, 246, 240) hover (237, 235, 231)  max channel delta  11  contrast 1.102
